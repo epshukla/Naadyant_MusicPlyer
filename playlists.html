@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Playlists</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background-color: #121212; color: white; padding: 20px; font-family: sans-serif; }
+    .playlist-card {
+        width: 200px;
+        background: #1f1f1f;
+        margin: 10px;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        text-align: center;
+        transition: transform 0.2s;
+    }
+    .playlist-card:hover {
+        transform: scale(1.03);
+        background-color: #2c2c2c;
+    }
+    .playlist-image {
+        width: 100%;
+        height: 150px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+    .playlist-name {
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+    }
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <h2>Your Playlists</h2>
+  <div class="grid" id="playlist-grid"></div>
+
+  <script src="functions.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const grid = document.getElementById("playlist-grid");
+        const playlistsData = JSON.parse(localStorage.getItem("playlists") || "{}");
+
+        for (const name in playlistsData) {
+            const list = playlistsData[name];
+            const topSong = list.length > 0 ? list[0].track.image : "1280821.png";
+
+            const card = document.createElement("div");
+            card.className = "playlist-card";
+            card.innerHTML = `
+                <img src="${topSong}" class="playlist-image" />
+                <div class="playlist-name">${name}</div>
+            `;
+            card.onclick = () => {
+                window.location.href = `playlist-view.html?name=${encodeURIComponent(name)}`;
+            };
+            grid.appendChild(card);
+        }
+    });
+  </script>
+</body>
+</html>
