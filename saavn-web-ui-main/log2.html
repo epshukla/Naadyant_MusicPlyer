@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Naadyant - Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Bitter:400,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700"
+    />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background: #000;
+        color: #fff;
+        font-family: "Source Sans Pro", sans-serif;
+      }
+
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .auth-container {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+      }
+
+      .auth-card {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 30px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .logo h1 {
+        color: #fff;
+        font-family: "Bitter", serif;
+        font-size: 2.5em;
+        margin: 0;
+      }
+
+      .logo p {
+        color: rgba(255, 255, 255, 0.7);
+        margin: 0;
+      }
+
+      .form-container {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideUp 0.8s ease-out 0.5s forwards;
+      }
+
+      .form-control {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        margin-bottom: 15px;
+      }
+
+      .form-control:focus {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.15);
+      }
+
+      .btn-primary {
+        background: linear-gradient(to right, #3494e6, #ec6ead);
+        border: none;
+        width: 100%;
+        padding: 10px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .alert {
+        margin-bottom: 15px;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Particles.js container -->
+    <div id="particles-js"></div>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="logo">
+          <h1>Naadyant</h1>
+          <p>Music Player & Downloader</p>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" class="form-container">
+          <div
+            id="login-alert"
+            class="alert alert-danger hidden"
+            role="alert"
+          ></div>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              id="login-email"
+              placeholder="Email"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              id="login-password"
+              placeholder="Password"
+            />
+          </div>
+          <button onclick="window.location.href='index.html'" type="button" id="login-btn" class="btn btn-primary" href>
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+      // Particles.js configuration
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#ffffff",
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
+            polygon: {
+              nb_sides: 5,
+            },
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+            anim: {
+              enable: false,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false,
+            },
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              enable: false,
+              speed: 40,
+              size_min: 0.1,
+              sync: false,
+            },
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 3,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200,
+            },
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "grab",
+            },
+            onclick: {
+              enable: true,
+              mode: "push",
+            },
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 140,
+              line_linked: {
+                opacity: 1,
+              },
+            },
+            bubble: {
+              distance: 400,
+              size: 40,
+              duration: 2,
+              opacity: 8,
+              speed: 3,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+            push: {
+              particles_nb: 4,
+            },
+            remove: {
+              particles_nb: 2,
+            },
+          },
+        },
+        retina_detect: true,
+      });
+
+      // Login form validation with regex
+      document
+        .getElementById("login-btn")
+        .addEventListener("click", function () {
+          const email = document.getElementById("login-email").value;
+          const password = document.getElementById("login-password").value;
+          const alertBox = document.getElementById("login-alert");
+
+          // Reset alert
+          alertBox.classList.add("hidden");
+          alertBox.classList.remove("alert-success");
+          alertBox.classList.add("alert-danger");
+
+          // Regex patterns
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+          // Validation checks
+          if (!email || !password) {
+            alertBox.textContent = "Please enter both email and password";
+            alertBox.classList.remove("hidden");
+            return;
+          }
+
+          if (!emailRegex.test(email)) {
+            alertBox.textContent = "Please enter a valid email address";
+            alertBox.classList.remove("hidden");
+            return;
+          }
+
+          if (!passwordRegex.test(password)) {
+            alertBox.textContent =
+              "Password must be at least 8 characters long and contain at least one letter and one number";
+            alertBox.classList.remove("hidden");
+            return;
+          }
+
+          // If validation passes - show success message
+          alertBox.textContent = "Login successful!";
+          alertBox.classList.remove("alert-danger");
+          alertBox.classList.add("alert-success");
+          alertBox.classList.remove("hidden");
+
+          // Clear form
+          document.getElementById("login-email").value = "";
+          document.getElementById("login-password").value = "";
+        });
+    </script>
+  </body>
+</html>
