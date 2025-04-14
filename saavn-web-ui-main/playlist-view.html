@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Playlist View</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background-color: #121212; color: white; padding: 20px; font-family: sans-serif; }
+    .song-item {
+        margin-bottom: 10px;
+        background: #1f1f1f;
+        padding: 10px;
+        border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="playlist-title">Playlist</h2>
+  <div id="songs-list"></div>
+
+  <script src="functions.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const playlistName = urlParams.get('name');
+    document.getElementById("playlist-title").innerText = playlistName;
+
+    const playlistsData = JSON.parse(localStorage.getItem("playlists") || "{}");
+    const list = playlistsData[playlistName];
+
+    const songsContainer = document.getElementById("songs-list");
+    if (list && list.length > 0) {
+        for (const item of list) {
+            const song = item.track;
+            const div = document.createElement("div");
+            div.className = "song-item";
+            div.innerHTML = `
+                <p><strong>${song.name}</strong> — ${song.artist}</p>
+                <button onclick='PlayAudio("${song.downloadUrl}", "${song.id}")'>▶ Play</button>
+            `;
+            songsContainer.appendChild(div);
+        }
+    } else {
+        songsContainer.innerHTML = "<p>No songs in this playlist.</p>";
+    }
+  </script>
+</body>
+</html>
