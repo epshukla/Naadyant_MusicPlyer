@@ -10,7 +10,8 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
       // Set a simple session flag. In a real app, use cookies, tokens, or session management.
       localStorage.setItem('isLoggedIn', 'true');
       // Redirect to your music player page (index.html)
-      window.location.href = '/home/theperson/Vajra/MyProjects/MusicPlayer/test/saavn-web-ui-main/index.html';
+      window.location.href = './saavn-web-ui-main/index.html';
+
     } else {
       alert('Invalid credentials. Please try again.');
     }

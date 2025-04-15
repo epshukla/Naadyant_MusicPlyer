@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naadyant - Welcome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+}
+
+.left {
+  max-width: 40%;
+  z-index: 2;
+}
+
+.left h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.left p {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.divider {
+  height: 60%;
+  width: 2px;
+  background: linear-gradient(to bottom, #333, #666);
+  box-shadow: 0 0 8px #000;
+  margin: 0 2%; /* Reduced margin to bring content closer */
+  z-index: 1;
+}
+
+.right {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 400px;
+  align-items: center;
+  z-index: 2;
+}
+
+.right a {
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  background: none;
+  border: 2px solid #444;
+  color: #eee;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.right a:hover {
+  background: #222;
+  border-color: #888;
+}
+
+.socials {
+  margin-top: 25px;
+  display: flex;
+  gap: 20px;
+}
+
+.socials a {
+  color: #999;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .left, .right {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .right {
+    margin-top: 40px;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="left">
+    <h1>Naadyant</h1>
+    <p>Unleash your rhythm.<br>
+      Explore and enjoy a futuristic music experience,<br>
+      powered by seamless tech and soulful sound.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="right">
+    <a href="log2.html">Login</a>
+    <a href="index.html">Start Listening</a>
+    <div class="socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+      </div>
+  </div>
+</body>
+</html>

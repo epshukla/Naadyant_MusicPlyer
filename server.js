@@ -3,13 +3,24 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
+
 const app = express();
 const PORT = 3000;
-
 const db = new sqlite3.Database('./music.db');
 
 app.use(cors());
 app.use(bodyParser.json());
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname)));
+
+// Serve homepage
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'landing.html'));
+});
+
+
 
 // Initialize tables
 const initDb = () => {

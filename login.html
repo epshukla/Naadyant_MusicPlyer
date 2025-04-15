@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - Music Player</title>
-  <!-- Optionally include Animate.css for sleek animations -->
+
+  <!-- Animate.css for entrance animation -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link rel="stylesheet" href="styles.css">  <!-- Your common CSS file or new one -->
+
   <style>
-    /* Additional styles specific for login page */
     body {
-      background: #232323;
+      background: #1e1e1e;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
     }
     .login-container {
       background: #fff;
       padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      width: 320px;
       text-align: center;
     }
     .login-container h2 {
       margin-bottom: 20px;
+      color: #333;
     }
     .login-container input {
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
+      padding: 12px;
+      margin: 12px 0;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
+      font-size: 14px;
     }
-    .login-container button {
+    .login-container a.button-link {
+      display: inline-block;
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       background: #007BFF;
-      border: none;
       color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 10px;
       transition: background 0.3s ease;
     }
-    .login-container button:hover {
+    .login-container a.button-link:hover {
       background: #0056b3;
     }
   </style>
 </head>
 <body>
-  <div class="login-container animate__animated animate__fadeInDown">
-    <h2>Welcome Back!</h2>
-    <form id="login-form">
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
+  <div class="login-container animate__animated animate__zoomIn">
+    <h2>Welcome Back</h2>
+    <input type="text" placeholder="Username" required />
+    <input type="password" placeholder="Password" required />
+    <a class="button-link" href="saavn-web-ui-main/index.html">Login</a>
   </div>
-  
-  <!-- login.js script to handle login logic -->
-  <script src="assets/js/login.js"></script>
 </body>
 </html>

@@ -49,6 +49,125 @@ function MoveUp(song_id) {
         UpdatePlaylistDisplay();
     }
 }
+function createPlaylist(name) {
+    fetch('http://localhost:3000/api/playlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log("Playlist created:", data);
+        playlists[name] = [];
+        UpdatePlaylistDropdown(); // if you're showing playlists in a dropdown
+    })
+    .catch(err => console.error('Error creating playlist:', err));
+}
+
+function addSongToPlaylistBackend(playlistId, song) {
+    fetch('http://localhost:3000/api/playlist/song', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            playlist_id: playlistId,
+            song: {
+                id: song.track.id,
+                name: song.track.name,
+                album: song.track.album.name,
+                artist: song.track.primaryArtists,
+                image: song.track.image[1]?.link || '',
+                downloadUrl: song.track.downloadUrl[4]?.link || song.track.downloadUrl[2]?.link
+            }
+        })
+    }).then(res => {
+        if (res.ok) console.log("Song added to DB playlist");
+        else console.error("Failed to add song to DB playlist");
+    });
+}
+
+function loadPlaylistsFromDB() {
+    fetch('http://localhost:3000/api/playlists')
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(pl => {
+                playlists[pl.name] = [];
+                fetch(`http://localhost:3000/api/playlist/${pl.id}/songs`)
+                    .then(res => res.json())
+                    .then(songs => {
+                        playlists[pl.name] = songs.map(song => ({
+                            track: {
+                                id: song.song_id,
+                                name: song.song_name,
+                                album: { name: song.album_name },
+                                primaryArtists: song.artist_name,
+                                image: [{}, { link: song.image_url }],
+                                downloadUrl: [{}, {}, {}, {}, { link: song.download_url }]
+                            }
+                        }));
+                        UpdatePlaylistDropdown(); // or wherever you're updating UI
+                    });
+            });
+        });
+}
+
+function storeDownload(song, filePath) {
+    fetch('http://localhost:3000/api/download', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            song_id: song.id,
+            song_name: song.name,
+            album_name: song.album,
+            artist_name: song.artist,
+            image_url: song.image,
+            file_path: filePath
+        })
+    }).then(res => {
+        if (res.ok) console.log("Download logged");
+        else console.error("Failed to log download");
+    });
+}
+
+function CreatePlaylist() {
+    var name = document.getElementById("new-playlist-name").value;
+    if (!name) return alert("Please enter a playlist name.");
+
+    // Send to backend
+    fetch('/api/playlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name })
+    })
+    .then(res => res.json())
+    .then(data => {
+        // Update both selectors
+        let playlistSelector = document.getElementById("playlist-selector");
+        let playlistSelect = document.getElementById("playlistSelect");
+
+        let option1 = document.createElement("option");
+        option1.value = data.id;
+        option1.text = data.name;
+        playlistSelector.appendChild(option1);
+
+        let option2 = document.createElement("option");
+        option2.value = data.id;
+        option2.text = data.name;
+        playlistSelect.appendChild(option2);
+
+        // Set new playlist as selected
+        playlistSelector.value = data.id;
+        SwitchPlaylist(data.id); // Optional: load the songs in that playlist
+
+        document.getElementById("new-playlist-name").value = ""; // Clear input
+        alert(`✅ Playlist '${data.name}' created!`);
+    })
+    .catch(err => {
+        console.error("Failed to create playlist:", err);
+        alert("❌ Could not create playlist. Try again.");
+    });
+}
+
+
 
 function MoveDown(song_id) {
     if (!currentPlaylist || !playlists[currentPlaylist]) return;

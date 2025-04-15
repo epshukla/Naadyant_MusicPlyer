@@ -16,6 +16,10 @@
 <!--Saavn-->
 <body style="padding-bottom: 50px;background: rgb(0,0,0);">
     <header class="header-dark" style="color: rgb(205,205,205);padding: 0px 0px 10px;">
+        <button onclick="window.location.href='log.html'" class="btn btn-primary" style="float: right; margin: 10px;">
+            Login
+          </button>
+          
         <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
             <div class="container"><a class="navbar-brand" href="#">Naadyant</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
@@ -30,7 +34,7 @@
                 <div class="col-md-8 offset-md-2">
                     <h1 class="text-center" style="margin: 0px;">Naadyant</h1>
                     <h3 class="text-center" style="color: rgba(249,255,255,0.81);font-family: Bitter, serif;">Music Player &amp; Downloader</h3>
-                    <p class="text-center" style="padding: 0px 5px;">Creators: Eshan Shukla, Kushagra Sinha, Jash Khatri</p>
+                    <p class="text-center" style="padding: 0px 5px;">Creators:Shlok Purohit, Eshan Shukla, Kushagra Sinha, Jash Khatri</p>
                 </div>
             </div>
         </div>
@@ -57,10 +61,10 @@
                         </div>
                         <div id="playlist-controls" style="margin-bottom: 15px;">
                             <input id="new-playlist-name" type="text" placeholder="New Playlist Name" class="form-control" style="max-width: 300px; display:inline-block;" />
-                            <button class="btn btn-success" onclick="CreatePlaylist()">Create</button>
+                            <button class="btn btn-success" onclick="CreatePlaylist(); console.log('Clicked!')">Create</button>
                             <select id="playlist-selector" class="form-control" onchange="SwitchPlaylist(this.value)" style="max-width: 300px; display:inline-block; margin-left:10px;"></select>
                         </div>
-                          
+                        
                         <div id="playlist-section" style="margin-top:30px;color:white;">
                             <h4>Your Playlist</h4>
                             <div id="playlist-list"></div>
@@ -107,12 +111,12 @@
                                 buttonContainer.appendChild(button);
                                 });
                             </script>
-                   
+                       
+                        
+                        <div id="playlist-result"></div>
+                        
                         <p class="footer" align="center">
-                            This content is not affiliated with, endorsed, sponsored, or specifically approved by any third party music provider like Gaana, Saavn, Spotfy, and is not responsible for any copyright material.<br>
-                            We don't serve any music on our servers.<br><br>
-                            Originally by wiz64.<br>
-                            Re-Designed by gaganmalvi
+                            Thank YOU!!
                         </p>
                         <div style="padding-bottom: 40px;">
 
